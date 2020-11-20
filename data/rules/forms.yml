@@ -1,0 +1,88 @@
+version: "2.0"
+rules:
+- rule: activate restaurant form
+  steps:
+  - intent: restaurant_search
+  - action: restaurant_form
+  - active_loop: restaurant_form
+
+- rule: submit restaurant form
+  condition:
+  # Condition that form is active.
+  - active_loop: restaurant_form
+  steps:
+  # Form is deactivated
+  - action: restaurant_form
+  - active_loop: null
+  # - slot_was_set:
+  #   - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  - action: utter_affirm_restaurant_info
+  - action: action_restaurant_search
+
+- rule: out of scope in restaurant form
+  condition:
+  - active_loop: restaurant_form
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - action: utter_ask_continue_restaurant_form
+
+- rule: chitchat in restaurant form
+  condition:
+  - active_loop: restaurant_form
+  steps:
+  - intent: chitchat
+  - action: utter_chitchat
+  - action: utter_ask_continue_restaurant_form
+
+- rule: deny in restaurant form
+  condition:
+  - active_loop: restaurant_form
+  steps:
+  - intent: deny
+  - action: utter_ask_continue_restaurant_form
+
+- rule: canthelp in restaurant form
+  condition:
+  - active_loop: restaurant_form
+  steps:
+  - intent: canthelp
+  - action: utter_canthelp
+  - action: utter_bye
+  - action: action_restart
+
+- rule: continue restaurant form
+  condition:
+  - active_loop: restaurant_form
+  steps:
+  - action: utter_ask_continue_restaurant_form
+  - intent: affirm
+  - action: restaurant_form
+  - active_loop: null
+  # - slot_was_set:
+  #   - requested_slot: null
+  - action: utter_affirm_restaurant_info
+  - action: action_restaurant_search
+
+- rule: don't continue restaurant form
+  condition:
+  - active_loop: restaurant_form
+  steps:
+  - action: utter_ask_continue_restaurant_form
+  - intent: deny
+  - action: action_deactivate_loop
+  - active_loop: null
+  # - slot_was_set:
+  #   - requested_slot: null
+  - action: utter_canthelp
+  - action: utter_bye
+  - action: action_restart
+
+- rule: explain in restaurant form
+  condition:
+  - active_loop: restaurant_form
+  steps:
+  - intent: explain
+  - action: utter_restaurant_search_explain
+  - action: utter_ask_continue_restaurant_form

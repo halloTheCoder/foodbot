@@ -1,0 +1,549 @@
+version: "2.0"
+nlu:
+- intent: restaurant_search
+  examples: |
+    - please get me some restaurants near me
+    - please get me some restaurants
+    - i am looking for some restaurants  near me
+    - i am looking for some restaurants
+    - get me some restaurants
+    - looking for some restaurants
+    - get me some restaurants please
+    - hey i am looking for some restaurants
+    - looking for some restraunts
+    - get me few restaurants
+    - please provide me a list of restaurants
+    - looking for some food points
+    - i am hungry
+    - tell me some food points near to me
+    - give me some food stalls
+    - tell me some restaurants
+    - give me some restaurants
+    - get me a list of restaurants near to me
+    - provide me some restaurants
+    - hey can you help me to find some restaurants nearby
+    - please get me a list of restaurants
+    - please get me a list of restaurants near by
+    - please help me find some restaurants
+    - get me some restaurants near by
+    - get me some restaurants near me
+    - i am hungry get me some restaurants near by
+    - please get me some restaurants near by
+    - please get me a list of all restaurants near by
+    - please get me all the restaurants near by
+    - please give me a list of restaurants
+    - get me a list of restaurants
+    - please find me some restaurants
+    - please get me a list of all restaurants
+    - get me a list of all restaurants near to me
+    - tell me some restaurants here
+    - i am hungry please tell me some restaurants near to me
+    - i want to eat something please tell me some location near by
+    - please tell me some food points here
+    - get me some restaurants neary by
+    - get me some food points
+    - find some food places near to me
+    - get me some restaurants near to me
+    - i am looking for some food points
+    - i am looking for restaurants
+    - get me some flight details
+    - ok get me some restaurants nearby
+    - get me some restaurants nearby
+    - get me some restaurants in chennai
+    - get me some restaurants i am hungry
+    - i am hungry please get me some restaurants
+    - need food
+    - please get me pizza stores
+    - get me some restaurants near
+    - get  me some restaurants
+    - Any good restaurants nearby?
+    - Can you find a restaurant for me?
+    - Can you find me a burger joint?
+    - Can you find me a restaurant?
+    - Can you recommend a restaurant open right now
+    - Could you find a restaurant for me?
+    - Could you find me a restaurant to eat at?
+    - Could you find me a restaurant?
+    - Do you find me a restaurant?
+    - Do you seek me a restaurant?
+    - Find a restaurant for me to eat at.
+    - Find a restaurant for me where I can eat.
+    - Find a restaurant for me?
+    - Find me a fast food restaurant.
+    - Find me a place to eat
+    - Find me a restaurant where I can eat.
+    - Have you seen me a restaurant?
+    - Help me find a restaurant
+    - Help me with finding this restaurant
+    - How can you help me find a restaurant.
+    - I am hungry, find me some place to go
+    - I need a new restaurant
+    - I need a restaurant.
+    - I need to find this restaurant
+    - I'm gonna need help finding a restaurant
+    - I'm looking for a Spanish restaurant.
+    - IS there any near by restaurant?
+    - Is there any restaurant?
+    - Pick a restaurant for me, please
+    - Recommend me a restaurant around here.
+    - Show me how to find a restaurant
+    - Show me the closest open restaurant
+    - Suggest me a good restaurant around
+    - What restaurant would you recommend for dinner?
+    - What's a good place to eat nearby
+    - What's the closest restaurant open near me
+    - Where is the restaurant
+    - Where should I eat?
+    - Where should I go for dinner?
+    - Will you find me a restaurant?
+    - Would you find a restaurant for me?
+    - Would you find any restaurant?
+    - Would you find me a restaurant?
+    - can i be shown a gluten free restaurant
+    - can you find me a restaurant?
+    - help me find restaurant
+    - i'm looking for a [Chinese](cuisine) restaurant
+    - restaurants
+    - will you see any restaurant for me?
+    - I want to find some restauant nearby
+    - show me restaurents
+    - show restaurents
+    - restaurents?
+    - Find me a place to eat in [Bangalore](location)
+    - I need a new restaurant in [Bengaluru](location)
+    - [Bhopal](location)
+    - help me find restaurant in [Bareilly](location)
+    - Could you find me a restaurant to eat at [Bhiwandi](location)?
+    - [Bhubaneshwar](location)
+    - Can you find me a restaurant in [Bombay](location)
+    - [Amritsar](location)
+    - [Jamnagar](location)
+    - [Jammu](location)
+    - [Kurnool](location)
+    - [Patna](location)
+    - Hey, help me find a restaurant in [Mumbai](location)
+    - I need to find a restaurant in [Kolkata](location)
+    - [Pune](location)
+    - [Cyberabad](location)
+    - [calcuta](location)
+    - Find a restaurant for me in [Calcutta](location)
+    - Where should I eat in [Delhi](location)?
+    - [Delhi NCR](location)
+    - Suggest me a good restaurant around [New Delhi](location)
+    - [Bengaluru](location)
+    - [Amritsar](location)
+    - I need to find this restaurant in [Delhi](location)
+    - [Dilli](location)
+    - Show me the closest open restaurant in [Chennai](location)
+    - [Indore](location)
+    - [Jodhpur](location)
+    - Hey help me find a restaurant in [Madras](location)
+    - Help me find a restaurant in [Surat](location)
+    - Recommend me a restaurant around [Pune](location)
+    - [Goa](location)
+    - Could you find a restaurant for me in [Belgaum](location)?
+    - [Chandigarh](location)
+    - [Rajahmundry](location)
+    - [Ujjain](location)
+    - Could you find a restaurant for me in [Bengaluru](location)?
+    - Would you find me a restaurant in [Allahabad](location)??
+    - [Vadodara](location)
+    - [Srinagar](location)
+    - Could you find me a restaurant in [Agra](location)?
+    - Pick a restaurant for me, please in [Kochi](location)
+    - How can you help me find a restaurant in [Jamshedpur](location)?
+    - [Thrissur](location)
+    - Can you find a restaurant for me in [Chandigarh](location)?
+    - [Lucknow](location)
+    - Would you find me a restaurant in [Visakhapatnam](location)??
+    - Could you find me a restaurant to eat at [Gurgaon](location)?
+    - [NewDelhi](location)
+    - [Surat](location)
+    - [Jamshedpur](location)
+    - Would you find me a restaurant in [calcutta](location)??
+    - Okay. Show me some in [bengaluru](location)
+    - Recommend me a restaurant around [Prayagraj](location)
+    - [Rourkela](location)
+    - [Vijayawada](location)
+    - [Ajmer](location)
+    - [Allahabad](location)
+    - [raurkela](location)
+    - Can you suggest some good restaurants in [bombay](location)
+    - I'm gonna need help finding a [northindian](cuisine) restaurant
+    - [american](cuisine)
+    - i'm looking for a [Chinese](cuisine) restaurant
+    - Hey, can you help me with locating a [mexican](cuisine) restaurant
+    - i want a [italian](cuisine) restaurant
+    - [chinese](cuisine)
+    - What's a good place to eat [mexican](cuisine) food
+    - Find a restaurant for me where I can eat [north indian](cuisine)
+    - Find a restaurant for me to eat [mexican](cuisine)
+    - [italian](cuisine)
+    - I am hungry, find me some place to go eat [italian](cuisine)
+    - Would you find a [south indian](cuisine) restaurant for me?
+    - Would you find a [american](cuisine) restaurant
+    - [north indian](cuisine)
+    - A place to eat [chinese](cuisine)
+    - I want to eat [italian](cuisine) food
+    - Please find me a [south-indian](cuisine) restaurant
+    - [south indian](cuisine)
+    - Quickly get me a [northindian](cuisine) place
+    - Where can i get [south-indian](cuisine) food?
+    - I need to find a restaurant [southindian](cuisine)
+    - [mexican](cuisine)
+    - A place to have [italian](cuisine) food
+    - Suggest me a good [mexican](cuisine) restaurant
+    - how can you help me find a [italian](cuisine) restaurant?
+    - I'm gonna need help finding a [northindian](cuisine) restaurant in [Mysore](location)
+    - i'm looking for a [Chinese](cuisine) restaurant in [Lucknow](location)
+    - Hey, can you help me with locating a [mexican](cuisine) restaurant in [delhi](location)
+    - i want a [french](cuisine) restaurant in [Visakhapatnam](location)
+    - What's a good place to eat [mexican](cuisine) food in [Bangalore](location)
+    - Find a restaurant for me where I can eat [north indian](cuisine) in [Jaipur](location)
+    - Find a restaurant for me to eat [mexican](cuisine) at [Faridabad](location)
+    - I am hungry, find me some place to go eat [italian](cuisine) in [Goa](location)
+    - Would you find a [south indian](cuisine) restaurant for me in [Kozhikode](location)?
+    - Would you find a [american](cuisine) restaurant for me in [Thiruvananthapuram](location)?
+    - A place to eat [chinese](cuisine) in [Mysore](location)
+    - Hey, can you help me with locating a [north indian](cuisine) restaurant in [calcutta](location)
+    - I want to eat [italian](cuisine) food in [cochin](location)
+    - Please find me a [south-indian](cuisine) restaurant in [madras](location)
+    - Quickly get me a [northindian](cuisine) place in [New Delhi](location)
+    - Where can i get [south-indina](cuisine) food in [Mangaluru](location)
+    - i'm looking for a [Chinese](cuisine) restaurant in [Cyberabad](location)
+    - [chinese](cuisine) eating place in [mumbai](location)
+    - I want to eat [italian](cuisine) food in [Prayagraj](location)
+    - Okay. I want to eat [south indian](cuisine) in [Allahabad](location)
+    - Okay. Show me some [north indian](cuisine) restaurants in [Prayagraj](location)
+    - What's a good place to eat [mexican](cuisine) food in [Chandigarh](location)
+    - I need to find a restaurant
+    - Can you find me a good restaurant?
+    - Would you be able to search a place to eat?
+    - A place to have food
+    - Feeling hungry, can you help
+    - I am hungry, find a restaurant
+    - Get me some food quickly
+    - Pick some place for me to eat quickly
+    - Where can i get some food to eat
+    - i'm looking for a restaurant
+    - how can you help me find a restaurant
+    - pick a restaurant for me
+    - please find a restaurant for me
+    - I'm hungry. Looking out for some good restaurants
+    - I want to eat
+    - I am feeling hungry
+    - I need a new restaurant
+    - Suggest me a good restaurant
+    - where should i eat?
+    - I'm gonna need help finding a restaurant
+    - Show me an open restaurant
+    - Find a restaurant for me to eat
+- intent: user_info
+  examples: |
+    - email id : [bbc@gmail.com](email)
+    - my email id is [abcd@yahoo.com](email)
+    - email id is [red@gmail.com](email)
+    - email [red@gmail.com](email) and phone [8724537891](phone_no)
+    - email id : [red@gmail.com](email) and phone : [8724537891](phone_no)
+    - email [red@gmail.com](email) and phone no: [8724537891](phone_no)
+    - my email is [red@gmail.com](email) and phone no is: [8724537891](phone_no)
+    - my email is [red@gmail.com](email) and phone no is [8724537891](phone_no)
+    - my email [red@gmail.com](email) and my phone no is: [8724537891](phone_no)
+    - my email [red@gmail.com](email) and phone no [8724537891](phone_no)
+    - email [red@gmail.com](email) and phone number: [8724537891](phone_no)
+    - my email is [red@gmail.com](email) and phone number is: [8724537891](phone_no)
+    - my email is [red@gmail.com](email) and phone number is [8724537891](phone_no)
+    - my email [red@gmail.com](email) and my phone number is: [8724537891](phone_no)
+    - my email [red@gmail.com](email) and phone number [8724537891](phone_no)
+    - yes. Please send it to [ahbcdj@dkj.com](email)
+    - yes. send it to [ahbcdj@dkj.com](email)
+    - [abcde.h75@yahoo.co.in](email)
+    - [abcde_h75@yahoo.co.in](email)
+    - [jddk.2jmd@kdl.co.in](email)
+    - [xyz@sth.edu](email)
+    - [abc.def@rediffmail.com](email)
+    - [xyz@upgrad.com](email)
+    - yes. its [vijendersingh412@gmail.com](email)
+    - yes. Please send it to [vijendersingh412@gmail.com](email)
+    - yes. Please send it to [xyz@sth.edu](email)
+    - yes send at [vijendersingh412@gmail.com](email)
+    - yes its [vijendersingh412@gmail.com](email)
+    - [vijendersingh412@gmail.com](email)
+    - [dkdevmallya@gmail.com](email)
+    - yes send me at [vijendersingh412@gmail.com](email)
+    - yes please note it down, it is [8724537891](phone_no)
+    - it is [1010653781](phone_no)
+    - yes sure it is [9711236622](phone_no)
+    - [8700981533](phone_no)
+    - phone number: [8700981533](phone_no)
+    - yes please note down it is [9711236681](phone_no)
+    - yes please note it down it is [9711236681](phone_no)
+    - it is [9711236681](phone_no)
+    - my contact number will be [8700981613](phone_no)
+    - i would like to book with the contact number [9810293859](phone_no)
+    - please book with [1111111111](phone_no)
+    - kindly book with [0000000000](phone_no)
+    - ya please take it [2222222222](phone_no)
+    - why not note it down it is [3333333333](phone_no)
+    - it is [9711236610](phone_no)
+    - yes it is [9711235581](phone_no)
+    - yes it is [8700981566](phone_no)
+    - yes it is [9711236681](phone_no)
+    - my contact number is [9711236681](phone_no)
+    - it is [9711236682](phone_no)
+    - yes it is [9810293866](phone_no)
+    - yes it is [9810293679](phone_no)
+    - it is [9911982773](phone_no)
+    - it is [9810293867](phone_no)
+    - it is [8700981611](phone_no)
+    - [8700981516](phone_no)
+    - it is [8700981512](phone_no)
+    - yes [9810293859](phone_no)
+    - name [akash](name) phone [9810293859](phone_no) email [vijendersingh412@gmail.com](email)
+    - name: [hallo](name)
+    - name: [Asmita](name)
+    - my name is [Ashish](name)
+    - my name and phone no is [Akshat Gaurabh](name) and [9911982773](phone_no)
+    - my phone number and name is [9911982773](phone_no) and [Akshat Gaurabh](name)
+    - name phone email [Sourabh Chillar](name) [9911982773](phone_no) [vijendersingh412@gmail.com](email)
+    - name email phone [Rashmi Prasad](name) [vijendersingh412@gmail.com](email) [9911982773](phone_no)
+    - phone email name [9911982773](phone_no) [vijendersingh412@gmail.com](email) [Rahul Singh](name)
+    - phone name email [9911982773](phone_no) [Chhawi Prasad](name) [vijendersingh412@gmail.com](email)
+    - email name phone [vijendersingh412@gmail.com](email) [Amarjeet Kumar](name) [9911982773](phone_no)
+    - email phone name [vijendersingh412@gmail.com](email) [9911982773](phone_no) [Rahul Singh](name)
+    - my name phone email [Jigyasa Singh](name) [9911982773](phone_no) [vijendersingh412@gmail.com](email)
+    - my name email phone is [Sanvi Chough](name) [vijendersingh412@gmail.com](email) [9911982773](phone_no)
+    - my phone email name [9911982773](phone_no) [vijendersingh412@gmail.com](email) [Rohit Singh](name)
+    - my phone name email [9911982773](phone_no) [Asmita Raj](name) [vijendersingh412@gmail.com](email)
+    - my email name phone [vijendersingh412@gmail.com](email) [Mahendra Biswal](name) [9911982773](phone_no)
+    - my email phone name [vijendersingh412@gmail.com](email) [9911982773](phone_no) [Gayteri Singh](name)
+    - here name phone email [Aishwarya Sinha](name) [9911982773](phone_no) [vijendersingh412@gmail.com](email)
+    - here name email phone is [Shreya Sengupta](name) [vijendersingh412@gmail.com](email) [9911982773](phone_no)
+    - here phone email name [9911982773](phone_no) [vijendersingh412@gmail.com](email) [Shreya Singh](name)
+    - here phone name email [9911982773](phone_no) [Sagnik Chakorbaty](name) [vijendersingh412@gmail.com](email)
+    - here email name phone [vijendersingh412@gmail.com](email) [Swanad Khare](name) [9911982773](phone_no)
+    - here email phone name [vijendersingh412@gmail.com](email) [9911982773](phone_no) [Koeli Ghosal](name)
+    - take name phone email [Aishwarya Sinha](name) [9911982773](phone_no) [vijendersingh412@gmail.com](email)
+    - take name email phone is [Shreya Sengupta](name) [vijendersingh412@gmail.com](email) [9911982773](phone_no)
+    - take phone email name [9911982773](phone_no) [vijendersingh412@gmail.com](email) [Shreya Singh](name)
+    - take phone name email [9911982773](phone_no) [Sagnik Chakorbaty](name) [vijendersingh412@gmail.com](email)
+    - take email name phone [vijendersingh412@gmail.com](email) [Swanad Khare](name) [9911982773](phone_no)
+    - take email phone name [vijendersingh412@gmail.com](email) [9911982773](phone_no) [Koeli Ghosal](name)
+    - sharing my name phone email [J. Kumar](name) [9911982773](phone_no) [vijendersingh412@gmail.com](email)
+    - sharing my name email phone is [N. Gnaneshwar](name) [vijendersingh412@gmail.com](email) [9911982773](phone_no)
+    - sharing my phone email name [9911982773](phone_no) [vijendersingh412@gmail.com](email) [N. Gupta](name)
+    - sharing my phone name email [9911982773](phone_no) [U.C Gupta](name) [vijendersingh412@gmail.com](email)
+    - sharing my email name phone [vijendersingh412@gmail.com](email) [Adrijit Goswami](name) [9911982773](phone_no)
+    - sharing my email phone name [vijendersingh412@gmail.com](email) [9911982773](phone_no) [G.P. Raja Shekhar](name)
+    - here sharing my name phone email [Pratima Panigrahi](name) [9911982773](phone_no) [vijendersingh412@gmail.com](email)
+    - here sharing my name email phone is [C. Nahak](name) [vijendersingh412@gmail.com](email) [9911982773](phone_no)
+    - here sharing my phone email name [9911982773](phone_no) [vijendersingh412@gmail.com](email) [R. Kanna](name)
+    - here sharing my phone name email [9911982773](phone_no) [Anubhav Kamal](name) [vijendersingh412@gmail.com](email)
+    - here sharing my email name phone [vijendersingh412@gmail.com](email) [Ayush](name) [9911982773](phone_no)
+    - here sharing my email phone name [vijendersingh412@gmail.com](email) [9911982773](phone_no) [Somnath Bhattacharya](name)
+    - here sharing name phone email [B.Roy](name) [9911982773](phone_no) [vijendersingh412@gmail.com](email)
+    - here sharing name email phone is [K. Ghoshal](name) [vijendersingh412@gmail.com](email) [9911982773](phone_no)
+    - here sharing phone email name [9911982773](phone_no) [vijendersingh412@gmail.com](email) [B. Bhowmik](name)
+    - here sharing phone name email [9911982773](phone_no) [PVNS Murthy](name) [vijendersingh412@gmail.com](email)
+    - here sharing email name phone [vijendersingh412@gmail.com](email) [MP Biswal](name) [9911982773](phone_no)
+    - here sharing email phone name [vijendersingh412@gmail.com](email) [9911982773](phone_no) [A. Ganguly](name)
+- intent: restart
+  examples: |
+    - yep you can restart
+    - Please restart this chat/
+    - ok restart please
+    - please restart the bot
+    - restart this conversation
+    - i want to restart
+    - why don't you restart????
+    - hey, i said restart
+    - restart session pls
+    - restart ps
+    - restart session
+    - restart
+- synonym: mexican
+  examples: |
+    - Mexican
+- synonym: chinese
+  examples: |
+    - Chinese
+    - Chinase
+- synonym: italian
+  examples: |
+    - Italian
+- synonym: mexican
+  examples: |
+    - Mexican
+- synonym: south indian
+  examples: |
+    - south-indian
+    - southindian
+    - south-indian
+    - South Indian
+    - South-Indian
+    - South indian
+    - South-indian
+    - south Indian
+- synonym: north indian
+  examples: |
+    - north-indian
+    - northindian
+    - north-indian
+    - North Indian
+    - North-Indian
+    - North indian
+    - North-indian
+    - north Indian
+- synonym: Bengaluru
+  examples: |
+    - Bangalore
+    - bangalore
+    - bengaluru
+    - Bengaluru
+- synonym: Chennai
+  examples: |
+    - chennai
+    - madras
+    - Madras
+- synonym: Delhi NCR
+  examples: |
+    - New Delhi
+    - New-Delhi
+    - new-delhi
+    - new-Delhi
+    - New-delhi
+    - Delhi
+    - delhi
+    - NewDelhi
+    - Dilli
+    - dilli
+    - Dellhi
+    - newdelhi
+    - Newdelhi
+    - new delhi
+    - new Delhi
+    - New delhi
+- synonym: Hyderabad
+  examples: |
+    - hyderabad
+    - Secunderabad
+    - secunderabad
+    - cyberabad
+    - Cyberabad
+- synonym: Mumbai
+  examples: |
+    - Bombay
+    - mumbai
+    - bombay
+- synonym: Kolkata
+  examples: |
+    - Calcutta
+    - kolkata
+    - kolkatta
+    - calcutta
+    - calcuta
+- synonym: Chennai
+  examples: |
+    - chennai
+    - madras
+    - Madras
+- synonym: Hyderabad
+  examples: |
+    - hyderabad
+    - Secunderabad
+    - secunderabad
+    - cyberabad
+    - Cyberabad
+- synonym: Lucknow
+  examples: |
+    - Lakhanpur
+- synonym: Mysore
+  examples: |
+    - mysore
+    - mysuru
+    - Mysuru
+    - kochi
+    - cochin
+    - Cochin
+- synonym: Mangalore
+  examples: |
+    - mangalore
+    - mangaluru
+    - Mangaluru
+- synonym: Visakhapatnam
+  examples: |
+    - visakhapatnam
+    - Vizag
+    - vizag
+- synonym: Thiruvananthapuram
+  examples: |
+    - thiruvananthapuram
+    - trivandrum
+    - Trivandrum
+    - Travancore
+    - travancore
+- synonym: Vadodara
+  examples: |
+    - vadodara
+    - Vadodra
+    - vadodra
+- synonym: Jamshedpur
+  examples: |
+    - jamshedpur
+    - Jamsedpur
+    - jamsedpur
+- synonym: Rajahmundry
+  examples: |
+    - rajahmundry
+    - Rajahmundri
+    - rajahmundri
+    - Rajamundry
+    - rajamundry
+    - Rajamundri
+    - rajamundri
+- synonym: Rourkela
+  examples: |
+    - rourkela
+    - Raurkela
+    - raurkela
+- synonym: Amritsar
+  examples: |
+    - amritsar
+    - Amratsar
+    - amratsar
+- synonym: Chandigarh
+  examples: |
+    - chandigarh
+    - Chandighar
+    - chandighar
+- synonym: Allahabad
+  examples: |
+    - prayagraj
+    - Prayagraj
+    - Allahabad
+    - allahabad
+- synonym: Nashik
+  examples: |
+    - nashik
+    - Nasik
+    - nasik
+- synonym: Pondicherry
+  examples: |
+    - pondicherry
+    - puducherry
+    - Puducherry
+- regex: greet
+  examples: |
+    - hey[^\s]*
+- regex: phone_no
+  examples: |
+    - \b(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}\b
+- regex: email
+  examples: |
+    - \b[\w\-\.]+@([\w-]+\.)+[\w-]{2,4}\b
+# - lookup: location
+#   files: |
+#     - data/nlu/lookups/location.yaml
+# - lookup: cuisine
+#   files: |
+#     - data/nlu/lookups/cuisine.yaml

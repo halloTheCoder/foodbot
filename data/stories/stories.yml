@@ -1,0 +1,28 @@
+version: "2.0"
+stories:
+- story: greet
+  steps:
+  - intent: greet
+  - action: action_greet_user
+- story: search restaurants from location and cuisine
+  steps:
+  - intent: greet
+  - action: action_greet_user
+  - intent: restaurant_search
+  - action: restaurant_form
+  - active_loop: restaurant_form
+  - slot_was_set:
+    - requested_slot: location
+  - slot_was_set:
+    - location: Bengaluru
+  - slot_was_set:
+    - requested_slot: cuisine
+  - slot_was_set:
+    - cuisine: american
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_affirm_restaurant_info
+  - action: action_restaurant_search
+  - slot_was_set:
+    - restaurant_search_sucess: true

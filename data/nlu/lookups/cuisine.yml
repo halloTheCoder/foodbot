@@ -1,0 +1,11 @@
+# all cuisines considered
+version: "2.0"
+nlu:
+  - lookup: cuisine
+    examples: |
+      - mexican
+      - chinese
+      - italian
+      - american
+      - south indian
+      - north indian

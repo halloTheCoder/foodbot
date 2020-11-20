@@ -1,0 +1,337 @@
+version: "2.0"
+session_config:
+  session_expiration_time: 60  # value in minutes, 0 means infinitely long
+  carry_over_slots_to_new_session: true  # set to false to forget slots between sessions
+
+intents:
+- affirm
+- bye
+- canthelp
+- deny
+- greet:
+    use_entities:
+      - name
+    ignore_entities:
+      - cuisine
+      - location
+      - email
+- explain
+- next_step
+- thank
+- chitchat
+- out_of_scope
+- restaurant_search
+- user_info
+- restart
+
+entities:
+- location
+- cuisine
+- name
+- phone_no
+- email
+
+slots:
+  cuisine:
+    type: categorical
+    values:
+      - mexican
+      - chinese
+      - italian
+      - american
+      - south indian
+      - north indian
+    auto_fill: false
+    influence_conversation: true
+  location:
+    type: text
+    auto_fill: false
+    influence_conversation: true
+  name:
+    type: text
+    auto_fill: true
+    influence_conversation: true
+  phone_no:
+    type: text
+    auto_fill: true
+    influence_conversation: true
+  email:
+    type: text
+    auto_fill: true
+    influence_conversation: true
+  # num_people:
+  #   type: categorical
+  #   auto_fill: false
+  # budget:
+  #   type: categorical
+  #   auto_fill: true
+  #   values:
+  #     - low
+  #     - medium
+  #     - high
+  #   influence_conversation: true
+
+  restaurant_search_sucess:
+    type: bool
+    auto_fill: false
+    influence_conversation: true
+  requested_slot:
+    type: categorical
+    auto_fill: false
+    influence_conversation: true
+  # time:
+  #   type: unfeaturized
+  #   auto_fill: false
+
+responses:
+  utter_greet:
+  - text: Hi, this is Sara! How may I help you?
+  utter_greet_name:
+  - text: Hello {name}, nice to meet you
+  - text: Hola {name}
+  - text: Lets get going {name}, time is precious
+  utter_bye:
+  - text: Bye. Have a great time.
+  - text: Saionara. See you soon.
+  utter_ask_confirm:
+  - buttons:
+    - payload: /affirm
+      title: YES
+    - payload: /deny
+      title: NO
+    text: Confirm ur action?
+  utter_canthelp:
+  - text: I'm sorry I couldn't help you.
+  utter_restart:
+  - text: Restarting service ...
+
+  utter_ask_continue_restaurant_form:
+  - buttons:
+    - payload: /affirm
+      title: YES
+    - payload: /deny
+      title: NO
+    text: Continue with restaurant search?
+  
+  #ask restaurant-related info
+  utter_ask_cuisine:
+  - buttons:
+    - payload: '/restaurant_search{{"cuisine": "chinese"}}'
+      title: Chinese
+    - payload: '/restaurant_search{{"cuisine": "mexican"}}'
+      title: Mexican
+    - payload: '/restaurant_search{{"cuisine": "italian"}}'
+      title: Italian
+    - payload: '/restaurant_search{{"cuisine": "american"}}'
+      title: American
+    - payload: '/restaurant_search{{"cuisine": "south indian"}}'
+      title: South Indian
+    - payload: '/restaurant_search{{"cuisine": "north indian"}}'
+      title: North Indian
+    text: what kind of cuisine would you like?
+  utter_ask_location:
+  - text: Choose a location from tier-1, tier-2 city in India?
+  # utter_ask_budget:
+  # - buttons:
+  #   - payload: low
+  #     title: Lesser than Rs. 300
+  #   - payload: medium
+  #     title: Rs. 300 to 700
+  #   - payload: high
+  #     title: More than 700
+  #   text: What's the average budget for two people?
+  utter_ask_name:
+  - text: Ur name pls?
+  - text: Can you kindly give me the name of the person on whose behalf the booking needs to be done
+  utter_ask_phone_no:
+  - text: Ur phone number pls?
+  - text: Can you kindly give me the phone number of the person on whose behalf the booking needs to be done
+  utter_ask_email:
+  - text: To which email-id should I send the booking details to?
+
+  #affirm
+  utter_affirm_restaurant_info:
+  - text: Thanks for sharing the valuable information, let me check what I can find
+      for you.
+  utter_select_restaurant:
+  - text: Select restaurant from below options
+
+  #failure in results or understanding
+  utter_restaurant_search_explain:
+  - text: I need the {requested_slot} to search for suitable restaurants
+  - text: Allow me to help you by kindly providing the {requested_slot}
+  - text: Don't test my patience and get me angry. Just joking. Pls provide me {requested_slot} as I want to help u.
+  utter_restaurant_search_error:
+  - text: Sorry, I couldn't get you. Can u pls specify {requested_slot} again. Sorry for the trouble. 😄
+  
+  utter_location_denied:
+  - text: I am sorry I can't help you with the given location {location}.\nNOTE- Location should be tier-1,2 city in India.
+  utter_cuisine_denied:
+  - text: I am sorry I can't help you with the given cuisine {cuisine}.\nNOTE- cuisine should be out of chinese, mexican, italian, american, south indian, north indian.
+
+  # utter_cuisine_error:
+  # - text: Sorry, I couldn't get you. Please choose one from the below cuisine options.
+  # utter_budget_error:
+  # - text: Sorry, I couldn't get you. Please choose one from the below budget options.
+  utter_showing_all_restaurants: 
+  - text: Sorry we couldn't find any {cuisine} cuisine for given {location}. Showing all available restaurants (top 5 wrt rating)?
+  
+  # utter_itsok:
+  # - text: I will try to get all types of restaurants for you.
+  
+  utter_no_results_found:
+  - text: Sorry, No results found for your criteria. Would you like to search for some other restaurants?
+  
+  utter_user_info_explain:
+  - text: I need the {requested_slot} to book the table
+  - text: Allow me to help you by kindly providing the {requested_slot}
+  - text: Don't test my patience and get me angry. Just joking. Pls provide me {requested_slot} so I can help u by booking the table.
+  utter_user_info_error:
+  - text: Sorry, I couldn't get you. Can u pls specify ur {requested_slot} again. Sorry for the trouble. 😄
+  # utter_name_error:
+  # - text: Sorry, I couldn't get you. Can u pls specify ur name again. Sorry for the trouble. 😄
+  # utter_phone_no_error:
+  # - text: Sorry, I couldn't get you. Can u pls specify ur phone_no again. Sorry for the trouble. 😄
+  # utter_email_error:
+  # - text: Sorry, I couldn't get you. Can u pls specify ur email-id again. Sorry for the trouble. 😄
+  utter_email_denied:
+  - text: Email-Id is either invalid or facing error sending mail to given email-id {email}. Can u kindly provide a different email-id.
+
+  utter_booking_confirmation:
+  - text: "Confirm the booking details:\n- name: {name}\n- phone_no: {phone_no}\n - email: {email}\n"
+  # num_people: {num_people}\n - phone_no: {phone_no}\n - time: {time}\n"
+  utter_email_sent:
+  - text: Sent. Bon Appetit!
+  - text: Sent.
+  
+  utter_ask_anythingelse:
+  - text: Is there more restaurant related search u need to do?
+
+actions:
+- action_greet_user
+- validate_restaurant_form
+- action_restaurant_search
+
+forms:
+  restaurant_form:
+    location:
+      - type: from_entity
+        entity: location
+        intent: restaurant_search
+        not_intent: [affirm, bye, canthelp, deny, greet, explain, next_step, thank, chitchat, out_of_scope, user_info, restart]
+    cuisine:
+      - type: from_entity
+        entity: cuisine
+        intent: restaurant_search
+        not_intent: [affirm, bye, canthelp, deny, greet, explain, next_step, thank, chitchat, out_of_scope, user_info, restart]
+  user_info_form:
+    name:
+      - type: from_entity
+        entity: name
+        intent: user_info
+        not_intent: [affirm, bye, canthelp, deny, greet, explain, next_step, thank, chitchat, out_of_scope, restaurant_search, restart]
+    phone_no:
+      - type: from_entity
+        entity: phone_no
+        intent: user_info
+        not_intent: [affirm, bye, canthelp, deny, greet, explain, next_step, thank, chitchat, out_of_scope, restaurant_search, restart]
+    email:
+      - type: from_entity
+        entity: email
+        intent: user_info
+        not_intent: [affirm, bye, canthelp, deny, greet, explain, next_step, thank, chitchat, out_of_scope, restaurant_search, restart]
+
+
+
+
+#   utter_did_that_help:
+#   - text: Did that help you?
+#   utter_assist:
+#   - text: Great ! I can help you to find restaurants based your preferred location
+#       and cuisine.
+#   utter_ask_location_cuisine:
+#   - text: Please share your location and cuisine you would like to have.
+#   utter_ask_location:
+#   - text: Can you please help me with your location?
+#   utter_ask_cuisine:
+#   - text: What cuisine you would like to binge :P.
+#   utter_affirm_info:
+#   - text: Thanks for sharing the valuable information, let me check what I can find
+#       for you.
+#   utter_affirm_location:
+#   - text: Thanks for sharing your location.
+#   utter_goodbye:
+#   - text: Bye. Have a great time.
+#   - text: Bye Bye. See you soon.
+#   utter_itsok:
+#   - text: It's completely fine ,I will try to get all types of restaurants for you.
+#       Choose the one you like :)
+#   utter_enter_cuisine_again:
+#   - text: Sorry we couldn't find any {cuisine} cuisine in {location}. Would you like
+#       to check some other cuisine?
+#   utter_nosuch_cuisine_all_restaurants:
+#   - text: We dint find any such cuisine that you are looking for. We will help you
+#       by providing all the available restaurants.
+#   utter_location_denied:
+#   - text: I am sorry I can't help you without location. You can find out the location
+#       and share with me else visit https://www.zomato.com/
+#   utter_tryAfter_sometime:
+#   - text: I am really sorry I can't help without the location. Please visit https://www.zomato.com/
+#   - text: Sorry to disappoint you mate because I can't help you without location.
+#       Please visit https://www.zomato.com/
+#   utter_affirm_cuisine:
+#   - text: Ahh, Thanks for sharing the cuisine. You have got a good taste :D
+#   - text: Thanks mate, Even I like {cuisine}.
+#   utter_thanks:
+#   - text: I hope you got what you were looking for,if not try me once more.
+#   utter_ask_category:
+#   - text: Would you like to try any specific category like 'Delivery', 'Dine-out',
+#       'Nightlife', 'Takeaway', 'Cafes', 'Pubs & Bars', 'Pocket Friendly Delivery',
+#       'Clubs & Lounges'
+#   utter_affirm_category:
+#   - text: Thanks for sharing the category,let me find some good restaurants for you.
+#   utter_ask_for_booking:
+#   - text: Would you like to do the table booking ?
+#   utter_ask_num_people:
+#   - text: kindly let me know for how many people you need the table..
+#   utter_ask_time:
+#   - text: please share the date and time at which you can arrive.
+#   utter_ask_phone_no:
+#   - text: kindly share your contact number on which you are reachable..
+#   utter_slots_values:
+#   - text: "I am going to book the restaurant using the following information:\n -\
+#       \ num_people: {num_people}\n - phone_no: {phone_no}\n - time: {time}\n"
+#   utter_submit:
+#   - text: Thanks for all the booking information
+
+# actions:
+# - utter_greet
+# - utter_did_that_help
+# - utter_goodbye
+# - utter_affirm_info
+# - utter_affirm_location
+# - utter_assist
+# - utter_ask_location
+# - utter_ask_cuisine
+# - utter_ask_location_cuisine
+# - action_show_restaurants
+# - action_set_location
+# - action_restaurants_nocuisine_nocat
+# - action_restaurants_nocuisine_withCategory
+# - utter_itsok
+# - utter_enter_cuisine_again
+# - utter_nosuch_cuisine_all_restaurants
+# - utter_location_denied
+# - utter_tryAfter_sometime
+# - utter_affirm_cuisine
+# - utter_thanks
+# - utter_ask_category
+# - utter_affirm_category
+# - utter_ask_for_booking
+# - utter_ask_num_people
+# - utter_ask_phone_no
+# - utter_slots_values
+# - utter_ask_time
+# - utter_submit
+# forms:
+# - tableBooking_form

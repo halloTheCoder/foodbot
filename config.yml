@@ -1,0 +1,94 @@
+language: en
+pipeline: 
+  - name: "SpacyNLP"
+  - name: "SpacyTokenizer"
+    # Flag to check whether to split intents
+    "intent_tokenization_flag": False
+    # Symbol on which intent should be split
+    "intent_split_symbol": "+"
+    # Regular expression to detect tokens
+    "token_pattern": None
+  # - name: RegexEntityExtractor
+  #   # text will be processed with case insensitive as default
+  #   "case_sensitive": False
+  #   # use lookup tables to extract entities
+  #   "use_lookup_tables": True
+  #   # use regexes to extract entities
+  #   "use_regexes": True
+  - name: "SpacyFeaturizer"
+    # Specify what pooling operation should be used to calculate the vector of
+    # the complete utterance. Available options: 'mean' and 'max'.
+    "pooling": "mean"
+  - name: "RegexFeaturizer"
+    # Text will be processed with case sensitive as default
+    "case_sensitive": False
+  - name: LexicalSyntacticFeaturizer
+    "features": [
+      ["low", "title", "upper", "prefix2", "suffix2"],
+      ["BOS", "EOS", "low", "upper", "title", "digit", "prefix5", "pos2"],
+      ["low", "title", "upper", "prefix2", "suffix2"],
+    ]
+  - name: CountVectorsFeaturizer
+    "analyzer": "word"
+    # The lemma of a word is currently only set by the SpacyTokenizer. You can disable this behavior by setting use_lemma to False
+    "use_lemma": True
+    "stop_words": "english"
+    # Whether to use a shared vocab
+    "use_shared_vocab": True
+  - name: CountVectorsFeaturizer
+    "analyzer": "char_wb"
+    "min_ngram": 1
+    "max_ngram": 4
+    # The lemma of a word is currently only set by the SpacyTokenizer. You can disable this behavior by setting use_lemma to False
+    "use_lemma": True
+    # Whether to use a shared vocab
+    "use_shared_vocab": False
+  - name: RegexEntityExtractor
+    # text will be processed with case insensitive as default
+    "case_sensitive": False
+    # use lookup tables to extract entities
+    "use_lookup_tables": True
+    # use regexes to extract entities
+    "use_regexes": True
+  # - name: SpacyEntityExtractor
+  #   # dimensions to extract
+  #   "dimensions": ["PERSON", "TIME", "GPE"]
+  - name: DIETClassifier
+    "intent_classification": True
+    "entity_recognition": True
+    "embedding_dimension": 50
+    "epochs": 100
+    "ranking_length": 5
+  - name: EntitySynonymMapper
+  - name: ResponseSelector
+    "retrieval_intent": chitchat
+    "scale_loss": false
+    "epochs": 100
+  - name: ResponseSelector
+    "retrieval_intent": out_of_scope
+    "scale_loss": false
+    "epochs": 100
+  - name: FallbackClassifier
+    "threshold": 0.7
+  # - name: "DucklingHTTPExtractor"
+  #   url: "http://0.0.0.0:8000"
+  #   dimensions: ["time","number"]
+  #   locale: "en_GB"
+  #   timezone: "Asia/Mumbai"
+      # Timeout for receiving response from http url of the running duckling server
+      # if not set the default timeout of duckling http url is set to 3 seconds.
+      # timeout : 3
+
+policies:
+- name: TEDPolicy
+  max_history: 10
+  epochs: 50
+  batch_size:
+  - 32
+  - 64
+- name: AugmentedMemoizationPolicy
+  max_history: 6
+- name: RulePolicy
+  core_fallback_threshold: 0.3
+  core_fallback_action_name: "action_default_fallback"
+  enable_fallback_prediction: True
